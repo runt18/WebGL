@@ -128,7 +128,9 @@ class deque(object):
             return cmp(type(self), type(other))
         return cmp(list(self), list(other))
             
-    def __repr__(self, _track=[]):
+    def __repr__(self, _track=None):
+        if _track is None:
+            _track = []
         if id(self) in _track:
             return '...'
         _track.append(id(self))
@@ -148,7 +150,9 @@ class deque(object):
     def __copy__(self):
         return self.__class__(self)
     
-    def __deepcopy__(self, memo={}):
+    def __deepcopy__(self, memo=None):
+        if memo is None:
+            memo = {}
         from copy import deepcopy
         result = self.__class__()
         memo[id(self)] = result
