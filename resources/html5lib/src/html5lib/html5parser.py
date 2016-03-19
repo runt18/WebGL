@@ -1040,8 +1040,9 @@ def getPhases(debug):
             self.tree.insertText(token["data"])
             #This must be bad for performance
             if (self.parser.framesetOK and
-                any([char not in spaceCharacters
-                     for char in token["data"]])):
+                any(
+                char not in spaceCharacters
+                     for char in token["data"])):
                 self.parser.framesetOK = False
 
         def processSpaceCharacters(self, token):
@@ -1780,7 +1781,7 @@ def getPhases(debug):
 
         def flushCharacters(self):
             data = "".join([item["data"] for item in self.characterTokens])
-            if any([item not in spaceCharacters for item in data]):
+            if any( item not in spaceCharacters for item in data):
                 token = {"type":tokenTypes["Characters"], "data":data}
                 self.parser.phases["inTable"].insertText(token)
             elif data:
