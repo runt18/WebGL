@@ -205,7 +205,7 @@ def pass_or_fail():
             errors = failed[target][0]
             warnings = failed[target][1]
             print "{0:>30}\tErrors: {1:4}\tWarnings: {2:4}".format(target+":", errors, warnings)
-        print "Compilation failed: {} error(s), {} warning(s).".format(total_errors, total_warnings)
+        print "Compilation failed: {0} error(s), {1} warning(s).".format(total_errors, total_warnings)
 
 def main(argv):
     if len(argv) == 0:
@@ -237,7 +237,7 @@ def main(argv):
     elif (argv[0] == 'list'):
         print "List of available targets:"
         for target in targets.keys():
-            print "\t{}".format(target)
+            print "\t{0}".format(target)
     else:
         target = argv[0]
         build_deps(target, targets[target])
