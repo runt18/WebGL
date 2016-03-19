@@ -26,7 +26,7 @@ class MoreParserTests(unittest.TestCase):
   def test_namespace_html_elements_1(self): 
     parser = html5parser.HTMLParser(namespaceHTMLElements=False)
     doc = parser.parse("<html></html>")
-    self.assert_(doc.childNodes[0].namespace == None)
+    self.assert_(doc.childNodes[0].namespace is None)
 
 def buildTestSuite():
   return unittest.defaultTestLoader.loadTestsFromName(__name__)

@@ -683,7 +683,7 @@ class EncodingParser(object):
                 return "".join(attrName), ""
             elif c in asciiUppercaseBytes:
                 attrName.append(c.lower())
-            elif c == None:
+            elif c is None:
                 return None
             else:
                 attrName.append(c)

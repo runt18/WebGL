@@ -109,7 +109,7 @@ def getDomBuilder(DomImplementation):
             return self.element.hasChildNodes()
 
         def getNameTuple(self):
-            if self.namespace == None:
+            if self.namespace is None:
                 return namespaces["html"], self.name
             else:
                 return self.namespace, self.name
@@ -197,7 +197,7 @@ def getDomBuilder(DomImplementation):
                 rv.append("|%s\"%s\"" %(' '*indent, element.nodeValue))
             else:
                 if (hasattr(element, "namespaceURI") and
-                    element.namespaceURI != None):
+                    element.namespaceURI is not None):
                     name = "%s %s"%(constants.prefixes[element.namespaceURI],
                                     element.nodeName)
                 else:
@@ -239,7 +239,7 @@ def getDomBuilder(DomImplementation):
           for attrname in node.attributes.keys():
             attr = node.getAttributeNode(attrname)
             if (attr.namespaceURI == XMLNS_NAMESPACE or
-               (attr.namespaceURI == None and attr.nodeName.startswith('xmlns'))):
+               (attr.namespaceURI is None and attr.nodeName.startswith('xmlns'))):
               prefix = (attr.nodeName != 'xmlns' and attr.nodeName or None)
               handler.startPrefixMapping(prefix, attr.nodeValue)
               prefixes.append(prefix)
@@ -250,7 +250,7 @@ def getDomBuilder(DomImplementation):
           # apply namespace declarations
           for attrname in node.attributes.keys():
             attr = node.getAttributeNode(attrname)
-            if attr.namespaceURI == None and ':' in attr.nodeName:
+            if attr.namespaceURI is None and ':' in attr.nodeName:
               prefix = attr.nodeName.split(':')[0]
               if nsmap.has_key(prefix):
                 del attributes[(attr.namespaceURI, attr.nodeName)]

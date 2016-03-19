@@ -539,8 +539,8 @@ def getPhases(debug):
             systemId = token["systemId"]
             correct = token["correct"]
 
-            if (name != "html" or publicId != None or
-                systemId != None and systemId != "about:legacy-compat"):
+            if (name != "html" or publicId is not None or
+                systemId is not None and systemId != "about:legacy-compat"):
                 self.parser.parseError("unknown-doctype")
 
             if publicId is None:
@@ -615,7 +615,7 @@ def getPhases(debug):
                 or startswithany(publicId,
                     ("-//w3c//dtd html 4.01 frameset//",
                      "-//w3c//dtd html 4.01 transitional//")) and 
-                    systemId == None
+                    systemId is None
                 or systemId and systemId.lower() == "http://www.ibm.com/data/dtd/v11/ibmxhtml1-transitional.dtd"):
                 self.parser.compatMode = "quirks"
             elif (startswithany(publicId,
@@ -624,7 +624,7 @@ def getPhases(debug):
                   or startswithany(publicId,
                       ("-//w3c//dtd html 4.01 frameset//",
                        "-//w3c//dtd html 4.01 transitional//")) and 
-                      systemId != None):
+                      systemId is not None):
                 self.parser.compatMode = "limited quirks"
 
             self.parser.phase = self.parser.phases["beforeHtml"]
