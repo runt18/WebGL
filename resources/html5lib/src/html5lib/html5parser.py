@@ -96,8 +96,8 @@ class HTMLParser(object):
         self.tokenizer_class = tokenizer
         self.errors = []
 
-        self.phases = dict([(name, cls(self, self.tree)) for name, cls in
-                            getPhases(debug).iteritems()])
+        self.phases = {name: cls(self, self.tree) for name, cls in
+                            getPhases(debug).iteritems()}
 
     def _parse(self, stream, innerHTML=False, container="div",
                encoding=None, parseMeta=True, useChardet=True, **kwargs):

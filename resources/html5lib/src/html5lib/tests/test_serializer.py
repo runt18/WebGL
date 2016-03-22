@@ -76,11 +76,11 @@ class JsonWalker(TreeWalker):
 
 
 def serialize_html(input, options):
-    options = dict([(str(k),v) for k,v in options.iteritems()])
+    options = {str(k): v for k,v in options.iteritems()}
     return serializer.HTMLSerializer(**options).render(JsonWalker(input),options.get("encoding",None))
 
 def serialize_xhtml(input, options):
-    options = dict([(str(k),v) for k,v in options.iteritems()])
+    options = {str(k): v for k,v in options.iteritems()}
     return serializer.XHTMLSerializer(**options).render(JsonWalker(input),options.get("encoding",None))
 
 def make_test(input, expected, xhtml, options):
