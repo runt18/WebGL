@@ -71,7 +71,7 @@ class Node(_base.Node):
         return bool(self.childNodes)
 
     def getNameTuple(self):
-        if self.namespace == None:
+        if self.namespace is None:
             return namespaces["html"], self.name
         else:
             return self.namespace, self.name
@@ -175,7 +175,7 @@ class Element(Node):
         self.attributes = {}
 
     def __unicode__(self):
-        if self.namespace == None:
+        if self.namespace is None:
             return u"<%s>" % self.name
         else:
             return u"<%s %s>"%(prefixes[self.namespace], self.name)

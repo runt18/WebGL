@@ -21,7 +21,7 @@ class Filter(_base.Filter):
                    # replace charset with actual encoding
                    has_http_equiv_content_type = False
                    for (namespace,name),value in token["data"].iteritems():
-                       if namespace != None:
+                       if namespace is not None:
                            continue
                        elif name.lower() == u'charset':
                           token["data"][(namespace,name)] = self.encoding

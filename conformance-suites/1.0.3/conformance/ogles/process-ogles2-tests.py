@@ -447,7 +447,7 @@ var successfullyParsed = true;
         for uniformElem in uniformElems:
           uniform = {"count": 1}
           for child in uniformElem.childNodes:
-            if child.localName == None:
+            if child.localName is None:
               pass
             elif child.localName == "name":
               uniforms[GetText(child.childNodes)] = uniform
