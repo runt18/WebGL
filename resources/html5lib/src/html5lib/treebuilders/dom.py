@@ -225,7 +225,9 @@ def getDomBuilder(DomImplementation):
     
         return "\n".join(rv)
     
-    def dom2sax(node, handler, nsmap={'xml':XML_NAMESPACE}):
+    def dom2sax(node, handler, nsmap=None):
+      if nsmap is None:
+        nsmap = {'xml':XML_NAMESPACE}
       if node.nodeType == Node.ELEMENT_NODE:
         if not nsmap:
           handler.startElement(node.nodeName, node.attributes)
